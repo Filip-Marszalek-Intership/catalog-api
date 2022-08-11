@@ -33,7 +33,12 @@ jobs:
       with:
         name: my-artifact
         path: |
+          ./bin
+          ./routes
+          ./app.js
+          ./node_modules
           ./package.json
           ./package-lock.json
-          ./node_modules
+
+
 
