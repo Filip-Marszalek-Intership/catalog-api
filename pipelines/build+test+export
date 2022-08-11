@@ -18,3 +18,14 @@ steps:
     npm ci
     npm run test
   displayName: 'npm install and build'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    pathToPublish: ./bin
+    pathToPublish: ./routes
+    pathToPublish: ./app.js
+    pathToPublish: ./node_modules
+    pathToPublish: ./package.json
+    pathToPublish: ./package-lock.json
+    targetPath: $(System.DefaultWorkingDirectory)/artifacts
+    artifactName: artifact
