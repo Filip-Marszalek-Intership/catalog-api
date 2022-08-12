@@ -24,12 +24,12 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: |
-      ./bin
-      ./routes
-      ./app.js
-      ./node_modules
-      ./package.json
-      ./package-lock.json
+      bin
+      routes
+      app.js
+      node_modules
+      package.json
+      package-lock.json
     targetFolder: artifacts
   
 - publish: artifacts
