@@ -8,10 +8,11 @@ on:
 jobs:
   build:
     name: test
-    runs-on: ubuntu-18.04
-    - uses: actions/download-artifact@v3
-      with:
-        name: my-artifact
+    runs-on: ubuntu-latest
     steps:
-      run: ls -R
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      steps:
+        run: ls -R
 
