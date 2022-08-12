@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+ build:
     name: test
     runs-on: ubuntu-18.04
     - uses: actions/download-artifact@v3
