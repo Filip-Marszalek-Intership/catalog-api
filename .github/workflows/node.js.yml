@@ -4,10 +4,10 @@
 name: Node.js CI
 
 #on:
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -39,6 +39,15 @@ jobs:
           ./node_modules
           ./package.json
           ./package-lock.json
+    
+    get-artifact:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+    - run: ls -R
 
 
 
