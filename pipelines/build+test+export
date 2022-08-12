@@ -24,4 +24,4 @@ steps:
 - publish: ./app.js
 - publish: ./node_modules
 - publish: ./package.json
-- publish: git ./package-lock.json
+- publish: ./package-lock.json
