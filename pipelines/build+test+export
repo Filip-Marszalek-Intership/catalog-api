@@ -21,10 +21,11 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    pathToPublish: ./bin
-    pathToPublish: ./routes
-    pathToPublish: ./app.js
-    pathToPublish: ./node_modules
-    pathToPublish: ./package.json
-    pathToPublish: ./package-lock.json
+    pathToPublish: |
+      ./bin
+      ./routes
+      ./app.js
+      ./node_modules
+      ./package.json
+      ./package-lock.json
     artifactName: artifact
