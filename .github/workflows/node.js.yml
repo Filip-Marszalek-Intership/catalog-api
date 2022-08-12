@@ -41,6 +41,7 @@ jobs:
     needs: build
     name: publish to dockerhub
     runs-on: ubuntu-latest
+    node-version: 12.x
     env:
       REPO: ${{ secrets.DOCKER_REPO }}
     steps:
