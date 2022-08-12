@@ -9,6 +9,6 @@ job:
   - uses: actions/download-artifact@v3
     with:
       name: my-artifact
-  - name lolxd
+  steps:
     run: ls -R
 
