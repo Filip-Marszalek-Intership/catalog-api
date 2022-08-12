@@ -19,6 +19,8 @@ steps:
     npm run test
   displayName: 'npm install and build'
 
+- script: ls -R
+
 - task: CopyFiles@2
   inputs:
     contents: |
