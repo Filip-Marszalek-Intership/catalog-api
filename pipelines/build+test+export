@@ -21,15 +21,20 @@ steps:
 
 - script: ls -R
 
-- task: CopyFiles@2
-  inputs:
-    contents: |
-      bin
-      routes
-      app.js
-      node_modules
-      package.json
-      package-lock.json
-    targetFolder: artifacts
+
+- script: |
+  mkdir artifacts
+  cp -r bin routes app.js node_modules package.json packages-lock.json artifacts
+
+#- task: CopyFiles@2
+#  inputs:
+#    contents: |
+#      bin
+#      routes
+#      app.js
+#      node_modules
+#      package.json
+#      package-lock.json
+#    targetFolder: artifacts
   
 - publish: artifacts
