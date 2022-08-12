@@ -38,6 +38,7 @@ jobs:
           ./package-lock.json
     
   get-artifact:
+    needs: build
     name: test
     runs-on: ubuntu-latest
     steps:
