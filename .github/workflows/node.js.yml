@@ -61,7 +61,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/CATALOG-API:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/catalog-api:latest
 
 
 #    - name: Login to Docker Hub
