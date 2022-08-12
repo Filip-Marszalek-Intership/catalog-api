@@ -1,0 +1,14 @@
+name: test-action
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+job:
+  - uses: actions/download-artifact@v3
+    with:
+      name: my-artifact
+  - name lolxd
+    run: ls -R
+
