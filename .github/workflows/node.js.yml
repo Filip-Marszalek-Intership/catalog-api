@@ -36,16 +36,25 @@ jobs:
           ./node_modules
           ./package.json
           ./package-lock.json
+          ./Dockerfile
     
-  get-artifact:
+  docker:
     needs: build
-    name: test
+    name: publish to dockerhub
     runs-on: ubuntu-latest
+    env:
+      REPO: ${{ secrets.DOCKER_REPO }}
     steps:
-    #- uses: actions/download-artifact@v3
-    #  with:
-    #    name: my-artifact
-    - run: ls -R
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+    - name: Login to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USER }} 
+           -p ${{ secrets.DOCKER_PASS }}
+    - name: Build Docker image
+      run:docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
+    - name: Publish Docker image
+      run: docker push $REPO
 
 
 
