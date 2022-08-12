@@ -19,9 +19,15 @@ steps:
     npm run test
   displayName: 'npm install and build'
 
-- publish: ./bin
-- publish: ./routes
-- publish: ./app.js
-- publish: ./node_modules
-- publish: ./package.json
-- publish: ./package-lock.json
+- task: CopyFiles@2
+  inputs:
+    contents: |
+      ./bin
+      ./routes
+      ./app.js
+      ./node_modules
+      ./package.json
+      ./package-lock.json
+    targetFolder: artifacts
+  
+- publish: artifacts
