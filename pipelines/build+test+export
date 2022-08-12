@@ -23,8 +23,8 @@ steps:
 
 
 - script: |
-  mkdir artifacts
-  cp -r bin routes app.js node_modules package.json packages-lock.json artifacts
+    mkdir artifacts
+    cp -r bin routes app.js node_modules package.json packages-lock.json artifacts
 
 #- task: CopyFiles@2
 #  inputs:
