@@ -5,10 +5,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-job:
-  - uses: actions/download-artifact@v3
-    with:
-      name: my-artifact
-  steps:
-    run: ls -R
+jobs:
+  test:
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+    steps:
+      run: ls -R
 
