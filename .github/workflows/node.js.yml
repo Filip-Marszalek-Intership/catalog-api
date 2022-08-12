@@ -70,6 +70,6 @@ jobs:
 #    - run: ls -R
 #    - run: cat ./bin/www
 #    - name: Build Docker image
-#      run: docker build -t $REPO:latest -t $REPO:CATALOG-API_github .
+#      run: docker build -t $REPO:latest -t $REPO:catalog-api_github .
 #    - name: Publish Docker image
 #      run: docker push $REPO
