@@ -1,3 +1,3 @@
 FROM node
-COPY ./* .
+COPY ./* ./
 RUN npm run start
