@@ -35,7 +35,6 @@ jobs:
           ./app.js
           ./node_modules
           ./package.json
-          ./package-lock.json
           ./Dockerfile
     
   docker:
@@ -60,3 +59,4 @@ jobs:
 
 
 
+#./package-lock.json
