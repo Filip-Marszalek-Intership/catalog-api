@@ -35,6 +35,7 @@ jobs:
           ./app.js
           ./node_modules
           ./package.json
+          ./package-lock.json
           ./Dockerfile
     
   docker:
@@ -60,7 +61,3 @@ jobs:
       run: docker build -t $REPO:latest -t $REPO:CATALOG-API_github .
     - name: Publish Docker image
       run: docker push $REPO
-
-
-
-#./package-lock.json
