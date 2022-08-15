@@ -6,35 +6,53 @@
 trigger:
 - main
 
-pool: default
+jobs:
+- job: building
+  pool: default
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  - script: |
+      npm ci
+      npm run test
+    displayName: 'npm install and build'
 
-- script: |
-    npm ci
-    npm run test
-  displayName: 'npm install and build'
+  - script: |
+      mkdir artifacts
+      cp -r bin routes app.js node_modules package.json package-lock.json artifacts
 
-- script: ls -R
+  #- task: CopyFiles@2
+  #  inputs:
+  #    contents: |
+  #      bin
+  #      routes
+  #      app.js
+  #      node_modules
+  #      package.json
+  #      package-lock.json
+  #    targetFolder: artifacts
 
+  - publish: artifacts
+    artifact: myartifact
 
-- script: |
-    mkdir artifacts
-    cp -r bin routes app.js node_modules package.json package-lock.json artifacts
-
-#- task: CopyFiles@2
-#  inputs:
-#    contents: |
-#      bin
-#      routes
-#      app.js
-#      node_modules
-#      package.json
-#      package-lock.json
-#    targetFolder: artifacts
-  
-- publish: artifacts
+- job: docker_publish
+  dependsOn: building
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+  - download: current
+    artifact: myartifact
+  - task: Docker@2
+    displayName: Login to Docker Hub
+    inputs:
+      command: login
+      containerRegistry: docker-azureDevOps
+  - task: Docker@2
+    displayName: Build and Push
+    inputs:
+      command: buildAndPush
+      repository: filip246/catalog-api_azure
+      tags: latest
