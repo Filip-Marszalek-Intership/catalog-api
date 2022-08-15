@@ -8,7 +8,8 @@ trigger:
 
 jobs:
 - job: building
-  pool: default
+  pool:
+    vmImage: ubuntu-latest
   steps:
   - task: NodeTool@0
     inputs:
