@@ -23,7 +23,7 @@ jobs:
 
   - script: |
       mkdir artifacts
-      cp -r bin routes app.js node_modules package.json package-lock.json artifacts
+      cp -r bin routes app.js node_modules package.json package-lock.json Dockerfile artifacts
 
   #- task: CopyFiles@2
   #  inputs:
@@ -54,7 +54,8 @@ jobs:
       containerRegistry: docker-azureDevOps
   - task: Docker@2
     displayName: Build and Push
-    inputs:
+    inputs: 
+      buildContext: /home/vsts/work/1/myartifact
       command: buildAndPush
       repository: filip246/catalog-api_azure
       tags: latest
